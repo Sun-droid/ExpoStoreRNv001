@@ -6,6 +6,9 @@ import { StackScreens } from "./source/helpers/types";
 //import SimpleScreen from "./src/Screens/SimpleScreen";
 //import TabsBottom from "./source/components/navigation/tabs/TabsBottom";
 import { CreateNewProduct } from "./source/pages/page2/CreateNewProduct";
+
+
+
 export default function App() {
   const Stack = createNativeStackNavigator<StackScreens>();
   return (
@@ -14,7 +17,7 @@ export default function App() {
         <Stack.Screen
           name="Items Shop"
           component={Page1}
-          options={{ headerShown: true }}
+          options={{ headerShown: true}}
         />
         <Stack.Screen
           name="CreateNewProduct"

@@ -16,37 +16,72 @@ import { ListDisplayMain } from "../Lists/ListDisplayMain";
 import { AddProduct } from "./components/AddProduct";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import styled from 'styled-components'
+import { Header, ListItem } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
+const list = [
+  {
+    name: 'ItemA',
+    type: 'Integrated',
+    number: '1200',
+  },
+  {
+    name: 'ItemB',
+    type: 'Integrated',
+    number: '1200',
+  },
+];
 
 export const Page1: React.FC<
   NativeStackScreenProps<StackScreens, "Page1">
 > = (props) => {
   const [enteredValue, setEnteredValue] = React.useState("");
 //   const Stack = createNativeStackNavigator<StackScreens>();
-
+  const myIcon = <Icon name="rocket" size={30} color="#900" />;
   return (
     <View style={styles.container}>
         <View>
-            <ListDisplayMain/>
+          <View style={{ height: 30, backgroundColor: '#ECCF90' , flexDirection:"row",
+                justifyContent: 'space-around', alignItems: 'center' }}>
+                <Text >Name</Text>
+                <Text >Type</Text>
+                <Text >Price</Text>
+          </View>
+          <View>
+              {
+                list.map((item, i) => (
+                 <TouchableOpacity>
+                  <ListItem onPress={() => props.navigation.navigate("CreateNewProduct")} style={{ backgroundColor: '#ECCF90' }}  key={i} bottomDivider>
+                    <ListItem.Content style={{ flex: 1 , height: 30 , flexDirection:"row",
+                                                      justifyContent: 'space-around', alignItems: 'center' }}
+                                                      >
+                      <ListItem.Title >{item.name}</ListItem.Title>
+                      <ListItem.Title>{item.type}</ListItem.Title>
+                      <ListItem.Title> <Icon name="dollar" size={14} color="#6D716F" /> {item.number}</ListItem.Title>
+                    </ListItem.Content>
+                  </ListItem>
+                </TouchableOpacity>
+                ))
+              }
+          </View>
         </View>
-      <TouchableOpacity
-              style={styles.button}
+        <AddProduct/>
+        <TouchableOpacity
               onPress={() => props.navigation.navigate("CreateNewProduct")}
             >
-              <Text style={styles.buttonText}>Click to go to Simple Page</Text>
-      </TouchableOpacity>
-      <View>
-        <Text>Hello</Text>
-{/*         <NavigationContainer>
+              <Text style={styles.buttonText}>Test</Text>
+        </ TouchableOpacity>
+        <View>
+            <Text>Hello</Text>
+            {/*          <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
                 name="List Main"
                 component={ListDisplayMain}
                 />
             </Stack.Navigator>
-        </NavigationContainer> */}
-      </View>
-      <AddProduct/>
+                </NavigationContainer> */}
+        </View>
     </View>
   );
 };
@@ -54,8 +89,7 @@ export const Page1: React.FC<
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "flex-start",
   },
   button: {
     padding: 25,
@@ -76,6 +110,12 @@ const styles = StyleSheet.create({
     padding: 2,
     width: 270,
   },
+  rowData: {
+      flexDirection:"row",
+      alignSelf:"flex-start",
+      backgroundColor: '#ecf0f1',
+    }
+
 });
 
 /*
