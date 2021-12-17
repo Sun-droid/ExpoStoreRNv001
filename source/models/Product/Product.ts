@@ -1,0 +1,16 @@
+export type UknonwnItem = {
+  type: string;
+  status: string;
+};
+
+export type Product = UknonwnItem & {id: string};
+
+export const canCreateProduct = (product: UknonwnItem): boolean => {
+  return Boolean(product.type && product.status);
+};
+
+export const canUpdateProduct = (product: Product): boolean => {
+  return Boolean(
+    product.id && product.type && product.status,
+  );
+};

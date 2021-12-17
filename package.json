@@ -10,28 +10,62 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@nozbe/watermelondb": "^0.24.0",
+    "@nozbe/with-observables": "^1.4.0",
+    "@react-native-picker/picker": "^2.2.1",
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "expo": "~43.0.2",
+    "expo-file-system": "~13.0.3",
+    "expo-sharing": "~10.0.3",
+    "expo-sqlite": "~10.0.3",
     "expo-status-bar": "~1.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-dropdown-picker": "^5.2.3",
     "react-native-elements": "^3.4.2",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-modal": "^13.0.0",
     "react-native-paper": "^4.10.1",
+    "react-native-picker-select": "^8.0.4",
+    "react-native-reanimated": "^2.2.4",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.8.0",
+    "react-native-sqlite-storage": "^6.0.1",
     "react-native-table-component": "^1.2.1",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "0.17.1",
-    "styled-components": "^5.3.3"
+    "reflect-metadata": "^0.1.13",
+    "styled-components": "^5.3.3",
+    "typeorm": "^0.2.41"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "@babel/plugin-proposal-decorators": "^7.16.4",
+    "@babel/plugin-transform-runtime": "^7.16.4",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
+    "babel-plugin-transform-typescript-metadata": "^0.3.2",
+    "better-sqlite3": "^7.4.5",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-devtools": "^4.21.0",
     "typescript": "~4.3.5"
   },
-  "private": true
+  "private": true,
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
 }

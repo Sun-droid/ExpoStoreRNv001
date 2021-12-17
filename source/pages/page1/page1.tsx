@@ -9,15 +9,20 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  FlatList,
+  Button,
 } from "react-native";
 import { StackScreens } from "../helpers/types";
 import { NavigationContainer } from "@react-navigation/native";
 import { ListDisplayMain } from "../Lists/ListDisplayMain";
 import { AddProduct } from "./components/AddProduct";
+import { ModalAddItems } from "./components/ModalAddItems";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import styled from 'styled-components'
 import { Header, ListItem } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { FAB } from 'react-native-paper';
+import Modal from "react-native-modal";
 
 const list = [
   {
@@ -38,10 +43,18 @@ export const Page1: React.FC<
   const [enteredValue, setEnteredValue] = React.useState("");
 //   const Stack = createNativeStackNavigator<StackScreens>();
   const myIcon = <Icon name="rocket" size={30} color="#900" />;
+
+  const goToCreateItem = () => props.navigation.navigate('Create New Product');
+
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
+
+  const handleModal = () => setIsModalVisible(() => !isModalVisible);
+
+
   return (
     <View style={styles.container}>
         <View>
-          <View style={{ height: 30, backgroundColor: '#ECCF90' , flexDirection:"row",
+          <View style={{ height: 30, backgroundColor: '#EA835A' , flexDirection:"row",
                 justifyContent: 'space-around', alignItems: 'center' }}>
                 <Text >Name</Text>
                 <Text >Type</Text>
@@ -51,7 +64,8 @@ export const Page1: React.FC<
               {
                 list.map((item, i) => (
                  <TouchableOpacity>
-                  <ListItem onPress={() => props.navigation.navigate("CreateNewProduct")} style={{ backgroundColor: '#ECCF90' }}  key={i} bottomDivider>
+                 <FlatList/>
+                  <ListItem onPress={handleModal}  style={{ backgroundColor: '#ECCF90' }}  key={i} bottomDivider>
                     <ListItem.Content style={{ flex: 1 , height: 30 , flexDirection:"row",
                                                       justifyContent: 'space-around', alignItems: 'center' }}
                                                       >
@@ -64,8 +78,21 @@ export const Page1: React.FC<
                 ))
               }
           </View>
+          <View>
+              <Modal isVisible={isModalVisible}>
+                <View style={{ flex: 1 }}>
+                   <Icon onPress={handleModal}  name="circle" size={50} color="#2FD6E7" style={{transform: [{rotateY: '180deg'} , {rotateX: '180deg'}]}}/>
+                </View>
+              </Modal>
+          </View>
+
         </View>
-        <AddProduct/>
+            <FAB
+                   style={styles.fab}
+                   small
+                   icon="plus"
+                   onPress={goToCreateItem}
+                 />
         <TouchableOpacity
               onPress={() => props.navigation.navigate("CreateNewProduct")}
             >
@@ -114,8 +141,14 @@ const styles = StyleSheet.create({
       flexDirection:"row",
       alignSelf:"flex-start",
       backgroundColor: '#ecf0f1',
-    }
-
+    },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "#2FD6E7"
+  },
 });
 
 /*

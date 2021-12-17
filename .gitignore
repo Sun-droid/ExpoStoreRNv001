@@ -2,3 +2,13 @@ node_modules
 .DS_Store
 .expo-shared/
 .expo .expo-shared
+.expo/web/
+Podfile/
+Pods/
+Bridging-header.h
+Podfile
+metro.config.js
+source/storage/
+babel.config copy.js/
+source/components/
+source/components/components/
